@@ -8,6 +8,7 @@ const {
     cartCount,
     totalPrice
 } = storeToRefs(cartStore);
+
 </script>
 
 <template>
@@ -34,8 +35,8 @@ const {
     <div class="cart-layout">
       <div class="cart-list">
         <CartItem
-          v-for="(item, index) in items"
-          :key="`${item.id}-${index}`"
+          v-for="item in items"
+          :key="item.product.id"
           :item="item"
         />
       </div>

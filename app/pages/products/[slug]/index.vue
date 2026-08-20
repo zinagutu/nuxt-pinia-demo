@@ -65,9 +65,13 @@ const related = computed(() =>
         <p class="kicker">{{ product.category }}</p>
         <h1>{{ product.title }}</h1>
         <p class="price">£{{ product.price }}</p>
-        <p v-if="product.rating" class="meta">
-          Rated {{ product.rating.rate }} / 5 · {{ product.rating.count }} reviews
-        </p>
+        <NuxtLink
+          v-if="product.rating"
+          class="reviews-link"
+          :to="`/products/${route.params.slug}/reviews`"
+        >
+          Rated {{ product.rating.rate }} / 5 · See all {{ product.rating.count }} reviews
+        </NuxtLink>
         <p class="product-desc">{{ product.description }}</p>
 
         <button class="btn" @click="cartStore.addToCart(product)">
